@@ -52,7 +52,7 @@ const Search = () => {
       }
       setSearchResults(response.data);
       setLoading(false);
-      setShowSearchCriteria(true); // Set to true after search button is clicked
+      setShowSearchCriteria(true); // Set to true after search button has been clicked
     } catch (error) {
       console.error('Error fetching tutors:', error);
       setLoading(false);
