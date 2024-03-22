@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//schema to store college info
 const collegeSchema = new mongoose.Schema({
   collegeName: {
     type: String,
