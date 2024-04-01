@@ -26,6 +26,9 @@ function LoginForm() {
         case 'tutor':
           navigate('/tutor-dashboard');
           break;
+        case 'admin': // Add case for admin login
+          navigate('/manage-student');
+          break;
         default:
           navigate('/'); // Handle default case
       }
@@ -40,8 +43,10 @@ function LoginForm() {
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}> {/* Add className */}
-      <div>
+    <form className="login-form" onSubmit={handleSubmit}>
+      <h2 style={{ color: 'blue', marginTop:10}}> Welcome Back!</h2>
+  <b style={{ color: 'green', marginTop:10}}>Please log in to continue.</b>
+      <div style={{marginTop:20}}>
         <label htmlFor="email">Email:</label>
         <input
           type="text"
@@ -73,10 +78,11 @@ function LoginForm() {
         >
           <option value="student">Student</option>
           <option value="tutor">Tutor</option>
+          <option value="admin">Admin</option> {/* Add option for admin login */}
         </select>
       </div>
       <button type="submit">Login</button>
-      <div className="register-buttons"> {/* Add className */}
+      <div className="register-buttons">
         <button type="button" onClick={() => navigateTo('/register-student')}>Register Student</button>
         <button type="button" onClick={() => navigateTo('/register-tutor')}>Register Tutor</button>
         <button type="button" onClick={() => navigateTo('/register-college')}>Register College</button>
