@@ -14,6 +14,8 @@ import College from './Components/student/mycollege.js';
 import CollegeTutors from './Components/student/collegetutors.js';
 import TutorList from './Components/student/tutors.js';
 import StudentProfile from './Components/student/profiletudent.js';
+import BookTutor from './Components/student/bookTutor.js';
+
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
       <Route path="/tutors" element={<TutorList/>} />
       <Route path="/studentprofile" element={<StudentProfile />} />
       <Route path="/college-tutors" element={<CollegeTutors/>} />
+        <Route path="/Book-Tutor" element={<BookTutor/>} />
+
 
 
     </Routes>
