@@ -217,3 +217,19 @@ exports.searchTutors = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+exports.deleteBooking = async (req, res) => {
+    try {
+        // Extract booking ID from request parameters
+        const bookingId = req.params.id;
+
+        // Delete the booking from the database
+        await Booking.findByIdAndDelete(bookingId);
+
+        // Respond with success message
+        res.status(200).json({ message: 'Booking deleted successfully' });
+    } catch (error) {
+        // Handle errors
+        console.error('Error deleting booking:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
