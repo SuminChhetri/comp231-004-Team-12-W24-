@@ -35,4 +35,7 @@ router.delete('/profile', authenticateTutor, tutorController.deleteProfile);
 router.get('/bookings', authenticateTutor, tutorController.getTutorBookings);
 router.get('/search', tutorController.searchTutors);
 
+router.delete('/bookings/:id', authenticateTutor, tutorController.deleteBooking);
+
+
 module.exports = router;
