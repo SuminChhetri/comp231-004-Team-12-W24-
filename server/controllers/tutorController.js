@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Tutor = require('../models/tutor');
 const Booking = require('../models/booking');
-// Tutor registration
+
 exports.register = async (req, res) => {
     try {
         // Extract tutor registration details from request body
@@ -36,6 +36,20 @@ exports.register = async (req, res) => {
     }
 };
 
+exports.getById = async (req, res) => {
+    try {
+        const tutor = await Tutor.findById(req.params.id);
+        
+        if (!tutor) {
+            return res.status(404).json({ message: 'Tutor not found' });
+        }
+
+        res.status(200).json(tutor);
+    } catch (error) {
+        console.error('Error fetching tutor details:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
 
 exports.getTutors = async (req, res) => {
     try {
@@ -50,13 +64,11 @@ exports.getTutors = async (req, res) => {
 // Tutor login
 exports.login = async (req, res) => {
     try {
-        // Extract login credentials from request body
         const { email, password } = req.body;
 
         // Find the tutor by email
         const tutor = await Tutor.findByCredentials(email, password);
 
-        // If tutor not found, respond with error
         if (!tutor) {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
@@ -103,7 +115,7 @@ exports.getProfile = async (req, res) => {
 
 exports.getTutorBookings = async (req, res) => {
     try {
-      const tutorId = req.tutor._id; // Assuming tutorId is extracted from the token
+      const tutorId = req.tutor._id;
       const bookings = await Booking.find({ tutor: tutorId }).populate('student');
       res.status(200).json({ bookings });
     } catch (error) {
@@ -128,11 +140,9 @@ exports.logout = async (req, res) => {
 
 exports.deleteProfile = async (req, res) => {
     try {
-        // Extract tutor ID from request object
         const tutorId = req.tutor._id;
 
-        // Delete tutor profile from the database
-        // Assuming your Tutor model is named 'Tutor'
+
         await Tutor.findByIdAndDelete(tutorId);
 
         // Respond with success message
@@ -173,7 +183,7 @@ exports.editProfile = async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 };
-/// Assuming you have a route handler for searching tutors
+
 exports.searchTutors = async (req, res) => {
     try {
         const { name, colleges } = req.query;
