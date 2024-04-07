@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-//schema to store college info
 const collegeSchema = new mongoose.Schema({
   collegeName: {
     type: String,
@@ -10,9 +9,19 @@ const collegeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  email: String,
-  phoneNumber: String,
-  description: String,
+  email:{
+    type: String,
+    required: true,        
+    unique: true
+  } ,
+  phoneNumber: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
   picture: String
 });
 
