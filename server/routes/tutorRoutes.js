@@ -20,6 +20,7 @@ const upload = multer({ storage: storage });
 
 router.post('/register', upload.single('profilePicture'), tutorController.register);
 
+router.get('/tutor/:id', tutorController.getById);
 
 router.post('/login', tutorController.login);
 router.get('/logout', authenticateTutor, tutorController.logout);
