@@ -31,7 +31,7 @@ const BookTutor = () => {
 
   const fetchTutorAvailabilities = async (tutorId, selectedDate) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/availability/tutor/${tutorId}`);
+      const response = await axios.get(`http://localhost:5000/api/availability/tutor/${tutorId}?date=${selectedDate}`);
       setAvailabilities(response.data);
     } catch (error) {
       console.error('Error fetching tutor availabilities:', error);
