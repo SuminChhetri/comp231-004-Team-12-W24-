@@ -15,11 +15,10 @@ app.use(express.json());
 // Configure CORS to allow requests from http://localhost:3000
 app.use(cors({
   origin: 'http://localhost:3000',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add methods as needed
-  credentials: true // Allow credentials (e.g., cookies, authorization headers)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  credentials: true 
 }));
 
-// Set 'views' directory for any views being rendered res.render()
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -29,7 +28,7 @@ app.use('/api/booking', require('./routes/bookingRoutes'));
 app.use('/api/college', require('./routes/collegeRoutes'));
 app.use('/api/student', require('./routes/studentRoutes'));
 app.use('/api/tutor', require('./routes/tutorRoutes'));
-app.use('/api/search', require('./routes/searchRoutes')); // Add search routes here
+app.use('/api/search', require('./routes/searchRoutes')); 
 app.use('/api/availability', require('./routes/availabilityRoutes'));
 
 // Serve the index.ejs file on the root URL
@@ -37,9 +36,9 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-// Define port
+// Defining port
 const PORT = process.env.PORT || 5000;
 console.log('JWT_SECRET_KEY:', process.env.JWT_SECRET_KEY);
 
-// Start server
+// Starting server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}: http://localhost:${PORT}`));

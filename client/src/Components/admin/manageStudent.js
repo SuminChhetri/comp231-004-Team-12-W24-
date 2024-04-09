@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AdminSidebar from '../../Partials/adminsidebar'; // Adjust the path accordingly
+import AdminSidebar from '../../Partials/adminsidebar'; 
 
 const ManageStudent = () => {
   const [students, setStudents] = useState([]);
@@ -10,7 +10,7 @@ const ManageStudent = () => {
     firstName: '',
     lastName: '',
     email: '',
-    phoneNumber: '', // Changed from 'phone' to 'phoneNumber'
+    phoneNumber: '', 
     password: '',
     collegeId: '',
     profilePic: null

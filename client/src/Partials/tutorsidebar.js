@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth, { logout } from './logout'; 
 import '../css/sidebar.css' 
+import logo from '../css/logo.png'; // Import the logo image
+
 
 const TutorSidebar = () => {
   const location = useLocation();
@@ -21,6 +23,9 @@ const TutorSidebar = () => {
 
   return (
     <aside className='sidebar'>
+      <div className="sidebar-logo">
+    <img src={logo} alt="Logo" />
+  </div> 
       <nav>
         <ul>
           <li className={location.pathname === '/tutor-dashboard' ? 'active' : ''}>

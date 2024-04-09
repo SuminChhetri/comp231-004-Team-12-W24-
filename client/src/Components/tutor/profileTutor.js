@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TutorSidebar from '../../Partials/tutorsidebar';
 import '../../css/profile-page.css';
-import { Link, useLocation, useNavigate } from 'react-router-dom'; // Import Link and useNavigate
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import default_tutor_pic from "../../css/teacher.jpg";
 
 const TutorProfile = () => {
   const [profile, setProfile] = useState({
@@ -15,13 +16,12 @@ const TutorProfile = () => {
     profilePicture: ''
   });
   const [profileImage, setProfileImage] = useState(null);
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfile = async () => {
       const token = localStorage.getItem('token');
       try {
-        console.log("Fetching profile data...");
         const response = await fetch('http://localhost:5000/api/tutor/profile', {
           method: 'GET',
           headers: {
@@ -29,9 +29,7 @@ const TutorProfile = () => {
             'Authorization': `Bearer ${token}`,
           },
         });
-        console.log("Response from fetch:", response);
         const data = await response.json();
-        console.log("Data received:", data);
         setProfile(data.tutor);
       } catch (error) {
         console.error('Error fetching profile data:', error);
@@ -43,7 +41,6 @@ const TutorProfile = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(`Updating ${name} to ${value}`);
     setProfile(prevProfile => ({
       ...prevProfile,
       [name]: value
@@ -57,14 +54,9 @@ const TutorProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting form data...");
     const confirmation = window.confirm('Are you sure you want to update your profile?');
     if (confirmation) {
       try {
-        console.log("Preparing form data...");
-        console.log("Profile before submission:", profile);
-        
-        // Prepare the data payload
         const data = {
           firstName: profile.firstName,
           lastName: profile.lastName,
@@ -74,23 +66,18 @@ const TutorProfile = () => {
           courses: profile.courses,
         };
   
-        // If profile image is selected, add it to the payload
         if (profileImage) {
           data.profilePicture = profileImage;
         }
   
-        console.log("Data payload prepared:", data);
-  
-        // Send the data payload to the server
         const token = localStorage.getItem('token');
-        const response = await axios.put('http://localhost:5000/api/tutor/profile', data, {
+        await axios.put('http://localhost:5000/api/tutor/profile', data, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
           },
         });
   
-        console.log("Profile updated successfully!");
         alert('Profile updated successfully!');
       } catch (error) {
         console.error('Error updating profile:', error);
@@ -110,7 +97,6 @@ const TutorProfile = () => {
           },
         });
         alert('Profile deleted successfully!');
-        // Redirect to login page after profile deletion
         navigate('/');
       } catch (error) {
         console.error('Error deleting profile:', error);
@@ -126,9 +112,10 @@ const TutorProfile = () => {
     <div className="profile-container">
       {renderSidebar()}
       <main>
-        <form onSubmit={handleSubmit}>
-          <div className="profile-picture">
-            <img src={profile.profilePicture} alt="Profile" />
+        <u><h1 style={{ textAlign: 'center' }}>My Profile</h1></u>
+        <form onSubmit={handleSubmit} style={{ width: '50%', marginRight: '20 ' }}>
+                    <div className="profile-picture-container">
+            <img src={profile.profilePicture || default_tutor_pic} alt="Profile" className="profile-picture" />
             <input type="file" accept="image/*" onChange={handleImageChange} />
           </div>
           <label>

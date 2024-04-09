@@ -7,6 +7,7 @@ const Booking = require('../models/booking');
 const Student = require('../models/student');
 const Tutor = require('../models/tutor');
 
+//function for admin login
 exports.adminLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -38,6 +39,8 @@ exports.adminLogin = async (req, res) => {
         res.status(401).json({ message: error.message });
     }
 };
+
+//function for admin registration
 exports.adminRegister = async (req, res) => {
     try {
         const { email, password } = req.body;

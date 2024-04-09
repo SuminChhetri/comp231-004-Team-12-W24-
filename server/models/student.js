@@ -16,7 +16,10 @@ const studentSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  phoneNumber: String,
+  phoneNumber: {
+    type: String,
+    required: true
+  },
   password: {
     type: String,
     required: true

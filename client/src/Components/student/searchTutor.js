@@ -3,8 +3,11 @@ import axios from 'axios';
 import StudentSidebar from '../../Partials/studentsidebar';
 import '../../css/search.css';
 import '../../css/tutorpage.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
 
 const Search = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const [searchName, setSearchName] = useState('');
   const [selectedColleges, setSelectedColleges] = useState([]);
   const [colleges, setColleges] = useState([]);
@@ -52,7 +55,7 @@ const Search = () => {
       }
       setSearchResults(response.data);
       setLoading(false);
-      setShowSearchCriteria(true); // Set to true after search button has been clicked
+      setShowSearchCriteria(true); // Set to true after search button is clicked
     } catch (error) {
       console.error('Error fetching tutors:', error);
       setLoading(false);
@@ -60,25 +63,8 @@ const Search = () => {
   };
 
   const handleBookTutor = async (tutorId) => {
-    const token = localStorage.getItem('token');
-    const sessionDetails = {
-      session: { tutor: tutorId },
-      sessionDate: '2023-01-01',
-      sessionLength: 60,
-    };
-
-    try {
-      const response = await axios.post('http://localhost:5000/api/booking/book', sessionDetails, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log('Booking successful', response.data);
-      setFeedback('Booking successful!');
-    } catch (error) {
-      console.error('Error booking tutor:', error);
-      setFeedback('Error booking tutor. Please try again.');
-    }
+    localStorage.setItem('selectedTutor', JSON.stringify(tutorId));
+    navigate('/Book-Tutor');    
   };
 
   return (

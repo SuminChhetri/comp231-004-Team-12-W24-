@@ -1,9 +1,14 @@
 const College = require('../models/college');
 const Tutor = require('../models/tutor')
-// Register college
+
+// function to register college
 exports.register = async (req, res) => {
     try {
         const { collegeName, location, email, phoneNumber, description, picture } = req.body;
+        const existingCollege = await College.findOne({ email });
+        if (existingCollege) {
+            return res.status(400).json({ message: 'College with this email already exists' });
+        }
         const college = new College({ collegeName, location, email, phoneNumber, description, picture });
         await college.save();
         res.status(201).json({ message: 'College registered successfully', college });
@@ -23,6 +28,8 @@ exports.getAllColleges = async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 };
+
+//getting a specific college based on id
 exports.getCollegeById = async (req, res) => {
     try {
         const college = await College.findById(req.params.id);
@@ -35,6 +42,8 @@ exports.getCollegeById = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+
+//getting tutors associated with the college id
 exports.getTutorsByCollegeId = async (req, res) => {
     try {
         const { collegeId } = req.params;

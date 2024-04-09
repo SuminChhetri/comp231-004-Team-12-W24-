@@ -6,6 +6,7 @@ form {
     padding: 20px;
     border: 1px solid #000; /* Basic black border */
     border-radius: 5px; /* Slightly rounded corners for the form */
+    
   }
   
   label {
@@ -89,7 +90,7 @@ form {
 
 input[type="text"],
 input[type="password"] {
-  width: 100%; /* Full width of the form */
+  width: 80%; /* Full width of the form */
   padding: 10px;
   margin-bottom: 20px; /* Space between each field */
   border: 1px solid #ccc; /* Lighter border for inputs */
@@ -109,7 +110,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #e7e7e7; /* Slightly darker grey on hover */
+  background-color: #6ee361; /* Slightly darker grey on hover */
 }
 
 /* Register buttons container */
@@ -125,6 +126,10 @@ button[type="button"] {
   padding: 10px; /* Padding inside the buttons */
   margin: 0 5px; /* Add margin to the left and right of each button */
   box-sizing: border-box; /* Include padding and border in the width calculation */
+  background-color: rgb(11, 255, 255);
+}
+button[type="button"]:hover {
+  background-color: red; /* Red color on hover */
 }
 
 /* No margin for the first button */
@@ -137,8 +142,3 @@ button[type="button"]:last-child {
   margin-right: 0;
 }
 
-/* Rest of your styles... */
-
-  
-  /* You may need to adjust styles if there are more specific details in the image */
-  

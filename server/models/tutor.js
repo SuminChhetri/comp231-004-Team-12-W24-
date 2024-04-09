@@ -16,7 +16,10 @@ const tutorSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    phoneNumber: String,
+    phoneNumber: {
+        type: String,
+        required: true
+      },
     password: {
         type: String,
         required: true
@@ -34,6 +37,10 @@ const tutorSchema = new mongoose.Schema({
         ref: 'College'
     },
     profilePicture: String,
+    availability: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Availability'
+    }]
    
 });
 

@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'; // Import use
 import axios from 'axios'; // Import axios for making HTTP requests
 import auth, { logout } from './logout'; // Import both logout function and auth object
 import '../css/sidebar.css' 
+import logo from '../css/logo.png'; // Import the logo image
+
 const StudentSidebar = ({ selectedPage }) => {
   const location = useLocation();
   const navigate = useNavigate(); // Initialize navigate
@@ -21,6 +23,9 @@ const StudentSidebar = ({ selectedPage }) => {
 
   return (
     <aside className='sidebar'>
+      <div className="sidebar-logo">
+    <img src={logo} alt="Logo" />
+  </div> 
       <nav>
         <ul>
           <li className={location.pathname === '/tutor-search' ? 'active' : ''}>

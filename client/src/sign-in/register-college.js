@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../css/RegisterCollege.css';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function RegisterCollege() {
   const [formData, setFormData] = useState({
@@ -12,7 +12,6 @@ function RegisterCollege() {
   });
 
   const [collegePics, setCollegePics] = useState([]);
-  const [successMessage, setSuccessMessage] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -33,10 +32,8 @@ function RegisterCollege() {
     data.append('phoneNumber', formData.phone);
     data.append('description', formData.collegeDescription);
     collegePics.forEach((pic, index) => {
-        data.append(`collegePics`, pic); 
-      });
-      
-      
+      data.append(`collegePics`, pic);
+    });
 
     try {
       const response = await fetch('http://localhost:5000/api/college/register', {
@@ -47,9 +44,12 @@ function RegisterCollege() {
         const result = await response.json();
         console.log(result);
         // Display success message
-        setSuccessMessage('College applied successfully!');
+        alert('College applied successfully!');
+      } else if (response.status === 400) {
+        const result = await response.json();
+        alert(result.message);
       } else {
-        // Handle errors
+        // Handle other errors
         console.error('Failed to register college:', response.statusText);
       }
     } catch (error) {
@@ -60,8 +60,7 @@ function RegisterCollege() {
   return (
     <div className="register-college-container">
       <form className="register-college-form" onSubmit={handleSubmit}>
-      <Link to="/">BACK TO LOGIN</Link> 
-
+        <Link to="/">BACK TO LOGIN</Link>
         <h2>Register your College</h2>
         <input type="text" name="collegeName" placeholder="College name" onChange={handleInputChange} required />
         <input type="text" name="location" placeholder="Location" onChange={handleInputChange} required />
@@ -70,7 +69,6 @@ function RegisterCollege() {
         <input type="file" name="collegePics" onChange={handleFileChange} multiple required />
         <textarea name="collegeDescription" placeholder="College Description" onChange={handleInputChange} required></textarea>
         <button type="submit">Apply College</button>
-        {successMessage && <p>{successMessage}</p>}
       </form>
     </div>
   );

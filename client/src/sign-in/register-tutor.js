@@ -10,7 +10,7 @@ function RegisterTutor() {
     email: '',
     phone: '',
     password: '',
-    collegeId: '', //Change from collegeName to collegeId
+    collegeId: '', 
     languages: '',
     courses: '',
     profilePic: null

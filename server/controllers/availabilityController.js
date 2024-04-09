@@ -35,6 +35,7 @@ exports.createOrUpdateAvailability = async (req, res) => {
     res.status(500).json({ message: 'Server error. Please try again later.' });
   }
 };
+
 exports.deleteAvailability = async (req, res) => {
     const availabilityId = req.params.id; // Assuming availability ID is passed as a route parameter
   
@@ -60,14 +61,14 @@ exports.deleteAvailability = async (req, res) => {
     }
   };
 
-  exports.searchAvailabilitiesByTutorId = async (req, res) => {
+exports.searchAvailabilitiesByTutorId = async (req, res) => {
     try {
       const { tutorId } = req.params; // Retrieve tutor ID from the route parameter
       const { date } = req.query; // Retrieve the selected date from the query parameters
-  
+      
       // Parse the selected date to get the day of the week (e.g., Monday, Tuesday, etc.)
       const dayOfWeek = moment(date).format('dddd');
-  
+
       // Find availabilities for the tutor and the selected day of the week
       const availabilities = await Availability.find({ tutor: tutorId, days: dayOfWeek });
   

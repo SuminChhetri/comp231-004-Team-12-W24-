@@ -1,5 +1,6 @@
 const Tutor = require('../models/tutor');
 
+//function to query tutors
 exports.searchTutors = async (req, res) => {
     try {
         const { date, tutorName, collegeName } = req.query;

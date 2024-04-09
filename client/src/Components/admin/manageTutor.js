@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AdminSidebar from '../../Partials/adminsidebar'; // Adjust the path accordingly
+import AdminSidebar from '../../Partials/adminsidebar'; 
 
 const ManageTutor = () => {
   const [tutors, setTutors] = useState([]);
-  const [showAddForm, setShowAddForm] = useState(false); // State variable to toggle the visibility of the form
-  const [showEditForm, setShowEditForm] = useState(false); // State variable to toggle the visibility of the edit form
+  const [showAddForm, setShowAddForm] = useState(false); 
+  const [showEditForm, setShowEditForm] = useState(false); 
   const [formData, setFormData] = useState({
     _id: '',
     firstName: '',
     lastName: '',
     email: '',
-    phoneNumber: '', // Changed from 'phone' to 'phoneNumber'
+    phoneNumber: '', 
     password: '',
     collegeId: '',
     languages: '',
@@ -264,9 +264,9 @@ const ManageTutor = () => {
             <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleInputChange} required />
             <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleInputChange} required />
             <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} required />
-            <input type="tel" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleInputChange} required /> {/* Changed from 'phone' to 'phoneNumber' */}
-            <input type="text" name="languages" placeholder="Languages" value={formData.languages} onChange={handleInputChange} required /> {/* Add language input field */}
-            <input type="text" name="courses" placeholder="Courses" value={formData.courses} onChange={handleInputChange} required /> {/* Add course input field */}
+            <input type="tel" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleInputChange} required /> 
+            <input type="text" name="languages" placeholder="Languages" value={formData.languages} onChange={handleInputChange} required />
+            <input type="text" name="courses" placeholder="Courses" value={formData.courses} onChange={handleInputChange} required /> 
             <button style={{ backgroundColor: 'green', color: 'white', marginTop:'23px'}} onClick={handleEditTutor}>Update Details</button>
           </div>
         )}

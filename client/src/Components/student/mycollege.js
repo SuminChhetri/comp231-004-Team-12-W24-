@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import StudentSidebar from '../../Partials/studentsidebar';
+import defaultCollegeImage from "../../css/college.jpg";
 
 const MyCollegePage = () => {
   const [college, setCollege] = useState(null);
@@ -54,9 +55,9 @@ const MyCollegePage = () => {
       <aside>
         <StudentSidebar />
       </aside>
-      <main>
-        <u><h1 style={{ textAlign: 'center' }}>My College</h1></u>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <main style={{ marginLeft: 'auto', marginRight: 0 }}>
+        <div>
+          <u><h1 style={{ textAlign: 'center' }}>My College</h1></u>
           {loading && <p>Loading...</p>}
           {!loading && !college && (
             <p style={{ color: 'red', fontSize: '18px' }}>You need to be enrolled in a financial institution while registering to view this page.</p>
@@ -65,7 +66,8 @@ const MyCollegePage = () => {
             <div style={{ border: '1px solid black', padding: '20px', textAlign: 'center' }}>
               <h2>{college.collegeName}</h2>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <img src={college.picture} alt="College" style={{ border: '1px solid black', margin: '10px' }} />
+                {/* Use the stored image path or default image */}
+                <img src={college.picture || defaultCollegeImage} alt="College" style={{ maxWidth: '100%', maxHeight: '100%', margin: '10px' }} />
               </div>
               <div>
                 <p><strong>Location:</strong> {college.location}</p>

@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const Tutor = require('../models/tutor');
 const Booking = require('../models/booking');
 
+//function for tutor registrat
 exports.register = async (req, res) => {
     try {
         // Extract tutor registration details from request body
@@ -29,13 +30,12 @@ exports.register = async (req, res) => {
         // Respond with success message and tutor details
         res.status(201).json({ message: 'Tutor registered successfully', tutor });
     } catch (error) {
-        // Log any errors for debugging
         console.error('Error registering tutor:', error);
-        // Respond with internal server error
         res.status(500).json({ message: 'Internal server error' });
     }
 };
 
+//function to fetch tutor by id
 exports.getById = async (req, res) => {
     try {
         const tutor = await Tutor.findById(req.params.id);
@@ -51,6 +51,7 @@ exports.getById = async (req, res) => {
     }
 };
 
+//fetching all the tutors
 exports.getTutors = async (req, res) => {
     try {
       const tutors = await Tutor.find().populate('college');
@@ -94,6 +95,7 @@ exports.login = async (req, res) => {
     }
 };
 
+//getting tutor profile 
 exports.getProfile = async (req, res) => {
     try {
         const tutorId = req.tutor._id;
@@ -113,6 +115,7 @@ exports.getProfile = async (req, res) => {
     }
 };
 
+//functions to get all the associated bookings made with tutor
 exports.getTutorBookings = async (req, res) => {
     try {
       const tutorId = req.tutor._id;
@@ -138,6 +141,7 @@ exports.logout = async (req, res) => {
     }
 };
 
+//function to delete own profile
 exports.deleteProfile = async (req, res) => {
     try {
         const tutorId = req.tutor._id;
@@ -153,6 +157,8 @@ exports.deleteProfile = async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 };
+
+//function to edit own profile
 exports.editProfile = async (req, res) => {
     try {
         const tutorId = req.tutor._id;
