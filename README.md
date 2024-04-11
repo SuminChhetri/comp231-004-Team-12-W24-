@@ -7,10 +7,12 @@ Overview
 
 eTutor is a modern web application designed to facilitate private tutoring sessions between students and tutors. It offers a user-friendly platform where students can easily book sessions with qualified tutors based on their academic needs. Developed using the MERN stack (MongoDB, Express.js, React.js, Node.js), eTutor aims to enhance the accessibility and effectiveness of private tutoring services.
 
-HOsted on Render:
+Hosted on Render:
 
     Link to live server:
     https://etutor-g1hk.onrender.com
+
+https://etutor-g1hk.onrender.com
 
 
 Getting Started
