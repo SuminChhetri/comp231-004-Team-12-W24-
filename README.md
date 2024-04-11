@@ -104,12 +104,11 @@ Sample Login Credentials
 
 Demo:
 
-     Student View:
+    Student View:
 
-
-    tutor view
-
-      https://github.com/SurajSuryabanshi/comp231-004-Team-12-W24-/assets/144243748/e6c0e584-81a1-43cc-baef-d987af2ce57f
+     
+    Tutor view
+     ![Demo](https://github.com/SurajSuryabanshi/comp231-004-Team-12-W24-/assets/144243748/e6c0e584-81a1-43cc-baef-d987af2ce57f)
 
 
     
