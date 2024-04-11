@@ -102,6 +102,18 @@ Sample Login Credentials
       Password: sumin
 
 
+Demo:
+
+     Student View:
+
+
+    tutor view
+
+      https://github.com/SurajSuryabanshi/comp231-004-Team-12-W24-/assets/144243748/e6c0e584-81a1-43cc-baef-d987af2ce57f
+
+
+    
+
 **Agile Customer and Project Manager:
 **
 
