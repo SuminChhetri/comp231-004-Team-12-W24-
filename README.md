@@ -56,6 +56,10 @@ Backend Technologies
     MongoDB
 
 
+Authentication: JSON Web Tokens (JWT)
+API Testing: Postman
+
+
 User Roles and Functionalities
       
     Student:
