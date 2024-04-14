@@ -110,13 +110,27 @@ Demo:
 
   Student View:
 
+
+![Demo](https://github.com/SurajSuryabanshi/comp231-004-Team-12-W24-/assets/144243748/fd38b732-7a04-463b-bd66-445f28d2a4bc)
+
+
      
  Tutor view:
 
   ![Demo](https://github.com/SurajSuryabanshi/comp231-004-Team-12-W24-/assets/144243748/e6c0e584-81a1-43cc-baef-d987af2ce57f)
 
+ Admin View
 
+
+![Demo](https://github.com/SurajSuryabanshi/comp231-004-Team-12-W24-/assets/144243748/2c27f86f-a5bc-4507-b48b-41efb62de404)
+
+
+
+ Registration View
     
+![Demo](https://github.com/SurajSuryabanshi/comp231-004-Team-12-W24-/assets/144243748/07a597fb-6dda-44a4-acb7-65cf3bee6c14)
+
+
 
 **Agile Customer and Project Manager:
 **
@@ -125,11 +139,10 @@ Demo:
 
 
 Project Contributors
-
+      Sumin Gharti Chhetri - 301313664
       Suraj Suryabanshi - 301312120
       Pawan Kumar Patel - 301299711
       Cathlyn Andrea Sarming - 301295539
-      Sumin Gharti Chhetri - 301313664
       Hye Sun An - 301314692
 
 Future Enhancements
